@@ -132,7 +132,7 @@ export default class App extends Vue {
   defaultEditorOptions(): monaco.editor.IEditorConstructionOptions {
     return {
       theme: this.persisted.theme,
-      lineNumbers: 'off',
+      lineNumbers: this.persisted.lineNumbers ? 'on' : 'off',
       automaticLayout: true,
       autoIndent: true,
       fontSize: this.persisted.fontSize,
@@ -211,6 +211,15 @@ export default class App extends Vue {
   updateFontFamily(value: string) {
     if (this.editor) {
       this.editor.updateOptions({ fontFamily: this.persisted.fontFamily })
+    }
+  }
+
+  @Watch('persisted.lineNumbers')
+  updateLineNumbers(value: boolean) {
+    if (this.editor) {
+      this.editor.updateOptions({
+        lineNumbers: this.persisted.lineNumbers ? 'on' : 'off',
+      })
     }
   }
 }

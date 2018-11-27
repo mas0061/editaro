@@ -52,6 +52,10 @@
           </optgroup>
         </select>
       </div>
+      <div class="form-group select-group">
+        <label>Line numbers:</label>
+        <input type="checkbox" name="lineNumbers" v-model="persisted.lineNumbers">
+      </div>
       <div class="app-version">エディ太郎: {{ appVersion }}</div>
     </div>
   </div>
